@@ -1,6 +1,6 @@
 ### VICEHD IS THE BEST WAY TO WATCH VICE VIDEOS ONLINE
 
-We love Vice’s video content, but we hate the way we have to watch it. The YouTube channel is ok. The website is ok. We wanted something better. So we built something better.
+We love Vice’s video content, but we hate the way we have to watch it. The YouTube channel is ok. The website is ok. We wanted something better. [So we built something better](http://www.vicehd.com/).
 
 ### COMING SOON
 - Better Player UI
