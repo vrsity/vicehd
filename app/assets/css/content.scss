@@ -1,0 +1,162 @@
+@import 'bourbon/bourbon';
+.content {
+  color: white;
+  position: absolute;
+  background: #111;
+
+  .video-iframe-container {
+    height: 100%;
+  }
+
+  &.show-oo-player #video-area { display: block; }
+  &.show-youtube-player #youtube-area { display: block; }
+}
+
+#video-area { display: none; }
+#youtube-area { display: none; }
+
+.no-video-msg {
+  padding: 100px 20px 0;
+  text-align: center;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  a {
+    color: #ddd;
+    &:hover { color: white; }
+  }
+}
+
+.content iframe {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.is-loading-video-player .video-iframe-container {
+  display: none !important;
+}
+
+.video-expand {
+  @include transition(left 200ms);
+  position: absolute;
+
+  top: 29px;
+  left: -57px;
+  z-index: 10000;
+
+  $size: 26px;
+  width: $size;
+  height: $size;
+  opacity: 0.2;
+
+  &:hover { opacity: 0.3; }
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('menu_black.png');
+}
+
+@mixin cover-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.content-title-overlay {
+  z-index: 10000;
+  padding: 200px 40px 40px 40px;
+  color: white;
+  overflow: hidden;
+  margin-top: 99999px;
+  @include cover-area();
+  @include transition(margin-top 0ms ease 2000ms);
+
+  .content-bg-blanket {
+    background-color: black;
+    opacity: 0;
+    @include transition(opacity 800ms ease 1000ms);
+    @include cover-area();
+  }
+}
+
+.content-title-overlay-show-title {
+  color: black;
+  background-color: white;
+  text-transform: uppercase;
+  padding: 2px 5px;
+  min-width: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.content-title-overlay-episode-title {
+  font-size: 64px;
+  line-height: 85px;
+}
+
+.content-title-overlay-episode-meta {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.animate-title-enter {
+  .content-title-overlay {
+    margin-top: 0;
+    @include transition(margin-top 0ms ease 0ms);
+    .content-bg-blanket {
+      opacity: 1;
+      @include transition(opacity 500ms ease 0ms);
+    }
+  }
+
+  .content-title-overlay-show-title {
+    @include animation(slideEnter 1500ms ease 500ms both alternate);
+  }
+  .content-title-overlay-episode-title {
+    @include animation(slideEnter 1500ms ease-out 900ms both alternate);
+  }
+  .content-title-overlay-episode-meta {
+    @include animation(slideEnter 1500ms ease 1000ms both alternate);
+  }
+}
+
+.animate-title-exit {
+  .content-title-overlay-show-title {
+    @include animation(slideExit 500ms ease 1200ms both alternate);
+  }
+  .content-title-overlay-episode-title {
+    @include animation(slideExit 500ms ease 1400ms both alternate);
+  }
+  .content-title-overlay-episode-meta {
+    @include animation(slideExit 500ms ease 1500ms both alternate);
+  }
+}
+
+
+@include keyframes(slideEnter) {
+  0% {
+    opacity: 0;
+    @include transform(translateX(0px));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateX(0px));
+  }
+}
+
+@include keyframes(slideExit) {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

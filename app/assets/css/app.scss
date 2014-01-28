@@ -1,0 +1,123 @@
+@import 'bourbon/bourbon';
+@import 'normalize';
+@import 'tools';
+@import 'font';
+@import 'base';
+
+@import 'content';
+@import 'sidebar';
+@import 'nav_bar';
+@import 'tab_bar';
+@import 'list_item';
+@import 'feed_loader';
+
+$sidebar-width: 350px;
+
+.video-is-expanded {
+  .content { left: 0; }
+  .sidebar { @include transform(scale(0.95)); opacity: 0; }
+  .video-expand {
+    background-image: url('menu_white.png');
+    left: 10px; }
+}
+
+.sidebar {
+  @include transition-property(transform, opacity);
+  @include transition-duration(200ms);
+  width: $sidebar-width;
+}
+
+.content {
+  @include transition(left 200ms);
+  position: absolute;
+  top: 0;
+  left: $sidebar-width;
+  bottom: 0;
+  right: 0;
+}
+
+.mobile-video-close-button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 100001;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.about-content {
+  h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+  h2, h3 {
+    font-family: $v;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  h3 {
+    margin-bottom: 10px;
+  }
+  padding: 20px;
+  .share-area {
+    margin-top: 20px;
+    .fb-like { margin-right: 10px; }
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-header { display: none; }
+  .sidebar-content { margin-top: 0; }
+  .sidebar.has-navbar .sidebar-content { margin-top: 55px; }
+  .sidebar {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .content {
+    left: 9999px;
+    @include transition(left 0);
+  }
+
+  .content.has-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+
+    .mobile-video-close-button {
+      display: block;
+    }
+  }
+
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : landscape) {
+  .tab-bar, .nav-bar {
+    height: 42px;
+  }
+
+  .nav-bar { line-height: 42px; }
+
+  .tab-bar-item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .sidebar.has-navbar .sidebar-content { margin-top: 42px; }
+  .sidebar-content { margin-bottom: 42px; }
+}
+

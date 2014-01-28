@@ -1,0 +1,33 @@
+{{#unless ENV.fastDev}}
+  <script src="http://player.ooyala.com/v3/YjMwNmI4YjU2MGM5ZWRjMzRmMjljMjc5?platform=html5-priority"></script>
+  <script src="http://www.youtube.com/player_api"></script>
+{{/unless}}
+
+
+<script>
+  window.ENV = {{{json ENV}}};
+  {{#if episodes}}
+    window.DATA.episodes = {{{episodes}}};
+  {{/if}}
+
+  {{#if shows}}
+    window.DATA.shows = {{{shows}}};
+  {{/if}}
+
+  {{#if show}}
+    window.DATA.show = {{{show}}};
+  {{/if}}
+</script>
+<script src='/app.js'></script>
+
+{{#if ENV.production}}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47370113-1', 'vicehd.com');
+  ga('send', 'pageview');
+</script>
+{{/if}}

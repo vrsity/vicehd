@@ -1,0 +1,14 @@
+<header class="sidebar-header">
+  <a href='#' {{action 'tabSelect' 'feed'}} class="logo ir">Vice</a>
+</header>
+
+{{view App.NavbarView}}
+
+<div class='sidebar-content'>
+  {{render 'info'}}
+  {{render 'shows'}}
+  {{render 'show'}}
+  {{render 'feed'}}
+</div>
+
+{{view App.TabsView}}

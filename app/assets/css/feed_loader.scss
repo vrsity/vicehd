@@ -1,0 +1,28 @@
+@import 'bourbon/bourbon';
+
+.feed-loader {
+  margin: 30px auto;
+  width: 40px;
+  margin: 20px auto 40px
+}
+
+.feed-loader {
+  div {
+    background-color: #aaa;
+    width: 100%;
+    height: 3px;
+    margin-bottom: 1px;
+
+    @include animation(stretchdelay 1.2s infinite ease-in-out);
+  }
+
+  .rect2 { @include animation-delay(-1.1s); }
+  .rect3 { @include animation-delay(-1.0s); }
+  .rect4 { @include animation-delay(-0.9s); }
+  .rect5 { @include animation-delay(-0.8s); }
+}
+
+@include keyframes(stretchdelay) {
+  0%, 40%, 100% { @include transform(scaleX(0.4)); }
+  20% { @include transform(scaleX(1.0)); }
+}

@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var UpdateEpisodes = require('../app/services/update_episodes');
+var db = require('../config/db');
+
+var connection = db.configure();
+connection.on('open', function () {
+  UpdateEpisodes.run(function(err) {
+    if (err) console.log(err);
+    console.log(arguments);
+    process.exit();
+  });
+});

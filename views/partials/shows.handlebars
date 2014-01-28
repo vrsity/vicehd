@@ -1,0 +1,19 @@
+<ul>
+  {{#each show in shows}}
+    <li>
+      <a href='#' {{action 'showClick' show}} {{bind-attr data-id='show._id'}} {{bind-attr class=':list-item show.active'}}>
+        <img class='thumbnail' {{bindAttr src='show.thumbnailUrl'}} />
+
+        <div class='info'>
+          <div class='title'>{{show.title}}</div>
+          <div class='description'>{{show.description}}</div>
+          <div class='meta'>
+            <span class='date'>Last episode &middot; {{show.humanDate}}</span>
+          </div>
+        </div>
+        <span class='episode-count'>{{show.episodeCount}}</span>
+      </a>
+    </li>
+  {{/each}}
+</ul>
+{{partial 'feed_loader'}}

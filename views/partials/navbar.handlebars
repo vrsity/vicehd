@@ -1,0 +1,14 @@
+{{#if hasNavbar}}
+
+  <div class="nav-bar-controls">
+    <a href="#" {{action 'sortClick' 'title'}} {{bind-attr class=':sort-button isSortTitle:active'}}>Alphabetical</a>
+    <a href="#" {{action 'sortClick' 'newestEpisodeDate'}} {{bind-attr class=':sort-button isSortDate:active'}}>Most Recent</a>
+  </div>
+
+  <div class="nav-bar-show-title">
+    <a href="#" {{action 'tabSelect' 'shows'}} class="nav-bar-back-button"></a>
+    <div class="show-title">{{showTitle}}</div>
+  </div>
+
+{{/if}}
+

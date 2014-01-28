@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+var db = require('../config/db');
+
+var UpdateVideoIds = require('../app/services/update_video_ids');
+
+var connection = db.configure();
+connection.on('open', function () {
+  UpdateVideoIds.run(function () { process.exit(); });
+});
+

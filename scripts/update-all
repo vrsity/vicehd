@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var _ = require('underscore');
+var async = require('async');
+var UpdateShows = require('../app/services/update_shows');
+var UpdateEpisodes = require('../app/services/update_episodes');
+var UpdateEpisodeCount = require('../app/services/update_episode_count');
+var UpdateVideoIds = require('../app/services/update_video_ids');
+var ReportSender = require('../app/services/report_sender');
+var db = require('../config/db');
+
+var connection = db.configure();
+connection.on('open', function () {
+  var showsData;
+  var episodesData;
+
+  async.series([
+    function (cb) {
+      UpdateShows.run(function(err, data) {
+        if (err) console.log(err);
+        showsData = data;
+        cb();
+      });
+    }
+  , function (cb) {
+      UpdateEpisodes.run(function(err, data) {
+        if (err) console.log(err);
+        episodesData = data;
+        cb();
+      });
+    }
+  , function (cb) {
+      UpdateEpisodeCount.run(cb);
+    }
+  , function (cb) {
+      UpdateVideoIds.run(cb);
+    }
+  ], function () {
+    ReportSender.send(_.extend(showsData, episodesData), function () {
+      console.log(arguments);
+      process.exit();
+    });
+  });
+
+});

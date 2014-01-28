@@ -1,0 +1,144 @@
+@import 'bourbon/bourbon';
+
+.scrollable {
+  background: white;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+
+
+.sidebar-header {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  padding: 20px 0;
+
+  .logo{
+    background: url('vice_logo.png') no-repeat 0 0;
+    width: 110px;
+    height: 36px;
+    display: block;
+    background-size: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+}
+
+.sidebar {
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+
+  .nav-bar { display: none; }
+  &.has-navbar {
+    .nav-bar { display: block; }
+    .sidebar-content { margin-top: 132px; }
+  }
+}
+
+
+.sidebar-content {
+  position: absolute;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+  margin: 77px 0 55px;
+}
+
+.sidebar-content-view {
+  position: absolute;
+  width: 100%;
+  display: none;
+  -webkit-transform: translate3d(0, 0, 0);
+  @include box-shadow(-1px 0 1px #bbb);
+
+  &.is-showing { display: block; }
+
+  &.animate-enter-left {
+    @include animation(animateEnterLeft 300ms ease-out 0s 1 both);
+  }
+
+  &.animate-enter-right {
+    @include animation(animateEnterRight 300ms ease-out 0s 1 both);
+  }
+
+  &.animate-exit-left {
+    @include animation(animateExitLeft 300ms ease 0s 1 both);
+  }
+
+  &.animate-exit-right {
+    @include animation(animateExitRight 300ms ease 0s 1 both);
+  }
+
+  .feed-loader {
+    display: none;
+  }
+
+  &.is-loading {
+    .feed-loader {
+      display: block;
+    }
+  }
+}
+
+@include keyframes(animateLoaderEnter) {
+  0% { height: 0; }
+  100% { height: 100px; }
+}
+
+@include keyframes(animateEnter) {
+  0% { opacity: 0; width: 100%; }
+  100% { opacity: 1; width: 100%; }
+}
+@include keyframes(animateExit) {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@include keyframes(animateEnterRight) {
+  0% { @include transform(translateX(-40%)); width: 100%;}
+  100% { @include transform(translateX(0%)); width: 100%;}
+}
+
+@include keyframes(animateExitRight) {
+  0% { @include transform(translateX(0%)); }
+  100% { @include transform(translateX(100%)); }
+}
+
+@include keyframes(animateEnterLeft) {
+  0% { @include transform(translateX(100%)); width: 100%;}
+  100% { @include transform(translateX(0%)); width: 100%;}
+}
+
+@include keyframes(animateExitLeft) {
+  0% { @include transform(translateX(0%)); }
+  100% { @include transform(translateX(-40%)); }
+}
+
+@include keyframes(animateNavbarEnterRight) {
+  0% { opacity: 0; @include transform(translateX(-40%)); width: 100%;}
+  60% { opacity: 1;  }
+  100% { opacity: 1; @include transform(translateX(0%)); width: 100%;}
+}
+
+@include keyframes(animateNavbarEnterLeft) {
+  0% { opacity: 0; @include transform(translateX(40%)); }
+  60% { opacity: 1;  }
+  100% { opacity: 1; @include transform(translateX(0%)); }
+}
+
+@include keyframes(animateNavbarExitLeft) {
+  0% { opacity: 1; @include transform(translateX(0%)); }
+  100% { opacity: 0; @include transform(translateX(-40%)); }
+}
+
+@include keyframes(animateNavbarExitRight) {
+  0% { opacity: 1; @include transform(translateX(0%)); }
+  100% { opacity: 0; @include transform(translateX(40%)); }
+}
+

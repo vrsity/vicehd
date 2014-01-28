@@ -1,0 +1,89 @@
+{
+  "name": "vice-hd",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "forever app.js",
+    "dev": "nodemon --ignore tmp/ --ignore node_modules/ --ignore public/ --ignore app/assets/ app.js",
+    "build-js": "browserify app/assets/js/app.js | uglifyjs -mc > public/app.js",
+    "build-css": "mkdir -p tmp && node-sass app/assets/css/app.scss tmp/app.css && cleancss tmp/app.css > public/app.css",
+    "postinstall": "npm run build-js & npm run build-css"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "dependencies": {
+    "hat": "*",
+    "request": "~2.33.0",
+    "handlebars": "*",
+    "express": "3.4.4",
+    "jade": "*",
+    "jsdom": "*",
+    "async": "*",
+    "underscore": "*",
+    "express3-handlebars": "*",
+    "uglify-js": "*",
+    "clean-css": "~2.0.6",
+    "nodemailer": "*",
+    "cheerio": "~0.13.1",
+    "mongoose": "*",
+    "moment": "*",
+    "mongoose-findorcreate": "~0.1.2",
+    "grunt-contrib-handlebars": "~0.6.0",
+    "jquery-replace-class": "0.0.1",
+    "rfolderify": "~1.2.0",
+    "brfs": "0.0.8",
+    "node-require-directory": "~1.0.2",
+    "browserify-shim": "~3.1.4",
+    "uglifyjs": "~2.3.6",
+    "node-sass": "~0.7.0",
+    "forever": "~0.10.11",
+    "browserify-middleware": "~2.2.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-shell": "~0.5.0",
+    "grunt-minjson": "~0.1.1",
+    "browserify": "~2.35.4",
+    "grunt-browserify": "~1.2.11",
+    "ember-template-compiler": "~1.3.0-beta.4",
+    "grunt-ember-templates": "~0.4.18",
+    "node-pow": "0.0.2",
+    "supervisor": "~0.5.6",
+    "nodemon": "~1.0.14"
+  },
+  "browser": {
+    "jquery": "./app/assets/js/vendor/jquery.js",
+    "infiniteScroll": "./app/assets/js/vendor/infinite_scroll.js",
+    "fastClick": "./app/assets/js/vendor/fastclick.js",
+    "Ember": "./app/assets/js/vendor/ember.js",
+    "ember-ga": "./app/assets/js/vendor/ember-google-analytics.js"
+  },
+  "browserify-shim": {
+    "jquery": {
+      "exports": "$"
+    },
+    "infiniteScroll": {
+      "exports": "InfiniteScroll",
+      "depends": [
+        "Ember"
+      ]
+    },
+    "ember-ga": {
+      "exports": "null",
+      "depends": [
+        "Ember"
+      ]
+    },
+    "fastClick": {
+      "exports": "FastClick"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  }
+}

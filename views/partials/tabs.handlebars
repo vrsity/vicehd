@@ -1,0 +1,5 @@
+{{#each item in tabItems}}
+  <a href='#' {{action 'tabSelect' item.route}} {{bind-attr data-tab=item.route}} {{bind-attr class=':tab-bar-item isAcitve'}}>
+    <span class='label'>{{item.title}}</span>
+  </a>
+{{/each}}

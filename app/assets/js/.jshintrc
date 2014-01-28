@@ -1,0 +1,13 @@
+{
+  "browser": true
+, "node": true
+, "laxcomma": true
+, "undef": true
+, "eqeqeq": true
+, "unused": true
+, "expr": true
+, "globals": {
+    "Ember": false
+  , "InfiniteScroll": false
+  }
+}

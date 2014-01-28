@@ -1,0 +1,39 @@
+@import 'font';
+
+.tab-bar {
+  height: 55px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 101%;
+  background-color: #FFF;
+  font-family: $v;
+  font-size: 18px;
+}
+
+.tab-bar-item {
+  float: left;
+  width: 33.3%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 5px;
+  color: #000;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+  &:hover{
+    background: #f7f7f7;
+  }
+  &:active{
+    background: #444;
+    color: #fff;
+  }
+  &.active {
+    background-color: #000;
+    color: #fff;
+    border-color: black;
+    cursor: default;
+  }
+}
+
+

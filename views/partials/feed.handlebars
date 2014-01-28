@@ -1,0 +1,23 @@
+<ul>
+  {{#each episode in episodes}}
+    <li>
+      <a href='#' {{bind-attr class=':list-item episode.active'}} {{action 'episodeClick' episode}} {{bind-attr data-id='episode._id'}}>
+        <img class='thumbnail' {{bindAttr src='episode.thumbnailUrl'}} />
+        <div class='info'>
+          <div class='subtitle'>{{episode.showTitle}}</div>
+          <div class='title'>{{episode.title}}</div>
+          <div class='meta'>
+            {{#if episode.humanDuration}}
+              <span class='date'>{{episode.humanDuration}} &middot;</span>
+            {{/if}}
+           <span class='date'>{{episode.humanDate}}</span>
+          </div>
+        </div>
+        {{#if episode.isWatched}}
+          <span class='is-watched-indicator'></span>
+        {{/if}}
+      </a>
+    </li>
+  {{/each}}
+</ul>
+{{partial 'feed_loader'}}

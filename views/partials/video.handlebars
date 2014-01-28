@@ -1,0 +1,28 @@
+<div {{action 'closeVideo'}} class='mobile-video-close-button'>
+  &#10005;
+</div>
+
+<div class='video-iframe-container'>
+  <div id='video-area'></div>
+  <div id='youtube-area'></div>
+</div>
+
+<div class='content-title-overlay'>
+  <div class='content-bg-blanket'></div>
+  <div>
+  <span class='content-title-overlay-show-title'>
+    {{currentEpisode.showTitle}}
+  </span>
+  </div>
+  <div class='content-title-overlay-episode-title'>
+    {{currentEpisode.title}}
+  </div>
+  <div class='content-title-overlay-episode-meta'>
+    {{currentEpisode.humanDate}} {{#if currentEpisode.humanDuration}} &middot; {{currentEpisode.humanDuration}}{{/if}}
+  </div>
+</div>
+
+{{#unless isSmall}}
+<a {{action 'expandVideo'}} href='#' class='video-expand'>
+</a>
+{{/unless}}

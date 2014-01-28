@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var UpdateShows = require('../app/services/update_shows');
+var db = require('../config/db');
+
+var connection = db.configure();
+connection.on('open', function () {
+  UpdateShows.run(function(err) {
+    if (err) console.log(err);
+    process.exit();
+  });
+});

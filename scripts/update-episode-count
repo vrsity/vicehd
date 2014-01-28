@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var db = require('../config/db');
+var UpdateEpisodeCount = require('../app/services/update_episode_count');
+
+var connection = db.configure();
+connection.on('open', function () {
+  UpdateEpisodeCount.run(function (err) {
+    if (err) console.log('Error upating counts', err);
+    process.exit();
+  });
+});
