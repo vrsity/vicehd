@@ -1,7 +1,6 @@
 .DS_Store
 .sass-cache/
 tmp/
-node_modules/
 public/app.js
 public/app.css
 scripts/sync-with-production-db
