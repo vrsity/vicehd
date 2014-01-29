@@ -13,3 +13,6 @@ We love Vice’s video content, but we hate the way we have to watch it. The You
 - Built With: [Node.js](http://nodejs.org/), [Ember.js](http://emberjs.com/)
 - Design: [Eli Rousso](https://twitter.com/elirousso)
 - Development: [Moudy Elkammash](https://twitter.com/moudy)
+
+### TODO
+- Use Ember data or something else to clean up `$.getJSON` calls
