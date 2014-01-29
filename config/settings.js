@@ -5,6 +5,7 @@ var exphbs = require('express3-handlebars');
 exports.configure = function (app) {
   app.set('port', process.env.PORT || 3006);
   app.set('title', 'vicehd');
+  app.set('mail_auth', { user: process.env.MAIL_USER , pass: process.env.MAIL_PASS });
   app.set('views', path.join(__dirname, '..', 'views'));
   app.engine('handlebars', exphbs({ defaultLayout: 'main', helpers: require('../lib/handlebars_helpers')}));
   app.set('view engine', 'handlebars');

@@ -5,7 +5,7 @@ exports.configure = function (app) {
   var options;
 
   if ('production' === app.get('env')) {
-    options = { service: 'Mailgun', auth: { user:'postmaster@sandbox9411.mailgun.org' , pass: '3-vbkb0qx3f7' } };
+    options = { service: 'Mailgun', auth: app.get('mail_auth') };
   }
 
   if ('development' === app.get('env')) {
