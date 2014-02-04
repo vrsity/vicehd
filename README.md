@@ -1,11 +1,15 @@
 ### VICEHD IS THE BEST WAY TO WATCH VICE VIDEOS ONLINE
 
-We love Vice’s video content, but we hate the way we have to watch it. The YouTube channel is ok. The website is ok. We wanted something better. [So we built something better](http://www.vicehd.com/).
+We love Vice’s video content, but we hate the way we have to watch it. The YouTube channel is ok. The website is ok. We wanted something better. [So we built something better (that quickly had to get taken down)](http://www.vicehd.com/).
 
-### COMING SOON
-- Better Player UI
-- User Accounts
-- Save videos to watch later
+### RUNNING IT LOCALLY
+Assuming you have node and mongo installed
+``` sh
+git clone git@github.com:vrsity/vicehd.git && cd vicehd
+npm install
+scripts/update-all # scrapes content and builds database
+npm start
+```
 
 ### UNDER THE HOOD
 
@@ -16,3 +20,6 @@ We love Vice’s video content, but we hate the way we have to watch it. The You
 
 ### TODO
 - Use Ember data or something else to clean up `$.getJSON` calls
+
+### SCREENSHOT
+![ViceHD screenshot](https://raw2.github.com/vrsity/vicehd/master/public/screenshot.png)
